@@ -3,6 +3,7 @@ package com.learn.jakarta.entity;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 public class Comment {
@@ -12,6 +13,10 @@ public class Comment {
 
     @Column
     private String content;
+
+    @ManyToOne
+    @JoinColumn(name="article_id", referencedColumnName = "id")
+    private Article article;
 
     @Column
     private Timestamp createdTimestamp;

@@ -2,6 +2,8 @@ package com.learn.jakarta.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Article {
 
@@ -14,6 +16,10 @@ public class Article {
 
     @Column(nullable = false)
     private String content;
+    
+    @OneToMany
+    @JoinColumn(name="article_id", referencedColumnName = "id")
+    private List<Comment> comments;
 
     public Long getId() {
         return id;
